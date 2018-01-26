@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Третьяков](https://up.htmlacademy.ru/javascript/12/user/590557).
-* Наставник: `Неизвестно`.
+* Наставник: [Юлия Плонина](https://htmlacademy.ru/profile/id64655).
 
 ---
 
