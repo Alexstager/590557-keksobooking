@@ -1,4 +1,3 @@
-<script language="JavaScript" type="text/javascript">
 var OFFERNUMBERS = 8;
 var avatarNumber = Math.floor(Math.random() * OFFERNUMBERS + 1);
 var author = {
