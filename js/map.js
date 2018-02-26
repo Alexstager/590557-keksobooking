@@ -5,11 +5,15 @@ var MINROOMS = 1;
 var MAXPRICE = 1000000;
 var MINPRICE = 1000;
 var MAXGUESTS = 3;
+var PHOTOSNUMBERS = 3;
 var MINY = 150;
 var MAXY = 500;
 var MINX = 300;
 var MAXX = 900;
-
+var titleValues = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
+var typeValues = ['flat', 'house', 'bungalo'];
+var checkinValues = ['12:00', '13:00', '14:00'];
+var checkoutValues = ['12:00', '13:00', '14:00'];
 var avatarNumbersArr = [];
 for (var avatarIndex = 1; avatarIndex <= OFFERNUMBERS; avatarIndex++) {
   avatarNumbersArr.push(avatarIndex);
@@ -17,16 +21,16 @@ for (var avatarIndex = 1; avatarIndex <= OFFERNUMBERS; avatarIndex++) {
 
 var royaltyOffers = [];
 for (var i = 0; i < OFFERNUMBERS; i++) {
-  var titleValues = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
-  var typeValues = ['flat', 'house', 'bungalo'];
-  var checkinValues = ['12:00', '13:00', '14:00'];
-  var checkoutValues = ['12:00', '13:00', '14:00'];
   var featuresArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
   var descriptionValues = '';
-  var photosArr = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-  var avatarNumber;
+  var photosArr = [];
+  for (var photosIndex = 1; photosIndex <= PHOTOSNUMBERS; photosIndex++) {
+    var photoItem = 'http://o0.github.io/assets/images/tokyo/hotel' + photosIndex + '.jpg';
+    photosArr.push(photoItem);
+  }
   var avatarRand = Math.floor(Math.random() * avatarNumbersArr.length);
-  avatarNumber = avatarNumbersArr[avatarRand];
+  var avatarNumber = avatarNumbersArr[avatarRand];
+  avatarNumbersArr.splice(avatarRand, 1);
   var titleRand = Math.floor(Math.random() * (titleValues.length));
   var priceValues = Math.floor(Math.random() * (MAXPRICE - MINPRICE + 1) + MINPRICE);
   var typeRand = Math.floor(Math.random() * (typeValues.length));
@@ -81,7 +85,6 @@ for (var i = 0; i < OFFERNUMBERS; i++) {
     offer: offerObj,
     location: offerLocation
   };
-  avatarNumbersArr.splice(avatarRand, 1);
   royaltyOffers.push(royaltyOffer);
 }
 
