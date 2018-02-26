@@ -160,6 +160,4 @@ var elemCreator = function (elemData, creationFunc) {
   return elemFragment;
 };
 
-var offerFragment = document.createDocumentFragment();
-offerFragment.appendChild(createOfferElem(royaltyOffers[0]));
-mapOfferElem.appendChild(offerFragment);
+mapOfferElem.appendChild(createOfferElem(royaltyOffers[0]));
