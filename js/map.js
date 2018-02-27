@@ -15,17 +15,17 @@ var typeValues = ['flat', 'house', 'bungalo'];
 var checkinValues = ['12:00', '13:00', '14:00'];
 var checkoutValues = ['12:00', '13:00', '14:00'];
 var avatarNumbersArr = [];
-for (var avatarIndex = 1; avatarIndex <= OFFERNUMBERS; avatarIndex++) {
-  avatarNumbersArr.push(avatarIndex);
+for (var i = 1; i <= OFFERNUMBERS; i++) {
+  avatarNumbersArr.push(i);
 }
 
 var royaltyOffers = [];
-for (var i = 0; i < OFFERNUMBERS; i++) {
+for (i = 0; i < OFFERNUMBERS; i++) {
   var featuresArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
   var descriptionValues = '';
   var photosArr = [];
-  for (var photosIndex = 1; photosIndex <= PHOTOSNUMBERS; photosIndex++) {
-    var photoItem = 'http://o0.github.io/assets/images/tokyo/hotel' + photosIndex + '.jpg';
+  for (var j = 1; j <= PHOTOSNUMBERS; j++) {
+    var photoItem = 'http://o0.github.io/assets/images/tokyo/hotel' + j + '.jpg';
     photosArr.push(photoItem);
   }
   var avatarRand = Math.floor(Math.random() * avatarNumbersArr.length);
@@ -41,15 +41,14 @@ for (var i = 0; i < OFFERNUMBERS; i++) {
   var featuresRange = featuresArr.length;
   var featuresCount = Math.floor(Math.random() * (featuresArr.length + 1));
   var featuresValues = [];
-  for (var j = 0; j < featuresCount; ++j) {
+  for (j = 0; j < featuresCount; j++) {
     var featuresRand = Math.floor(Math.random() * (featuresRange - j));
     featuresValues.push(featuresArr[featuresRand]);
     featuresArr.splice(featuresRand, 1);
   }
-
-  var photosCount = photosArr.length - 1;
+  var photosCount = photosArr.length;
   var photosValues = [];
-  for (var k = 0; k <= photosCount; k++) {
+  for (j = 0; j < photosCount; j++) {
     var photosTemp = Math.floor(Math.random() * (photosArr.length));
     photosValues.push(photosArr[photosTemp]);
     photosArr.splice(photosTemp, 1);
@@ -118,8 +117,7 @@ var copyElemFromTemplate = function (querySelector) {
 
 var getFeaturesItemElem = function (feature) {
   var featuresItemElem = copyElemFromTemplate('.popup__features li');
-  featuresItemElem.className = '';
-  featuresItemElem.classList.add('feature', 'feature--' + feature);
+  featuresItemElem.className = 'feature feature--' + feature;
   return featuresItemElem;
 };
 
@@ -136,19 +134,19 @@ var getImgItemElem = function (src) {
 };
 
 var createOfferElem = function (rent) {
+	var offer = rent.offer;
   var offerElem = copyElemFromTemplate('article.map__card');
-  offerElem.querySelector('h3').textContent = rent.offer.title;
-  offerElem.querySelector('p small').textContent = rent.offer.address;
-  offerElem.querySelector('.popup__price').textContent = rent.offer.price + '₽/ночь';
-  offerElem.querySelector('h4').textContent = rent.offer.type;
-  offerElem.querySelector('h4 + p').textContent = rent.offer.rooms + ' комнаты для ' + rent.offer.guests + ' гостей';
-  offerElem.querySelector('h4 + p + p').textContent = 'Заезд после ' + rent.offer.checkin + ',' + ' выезд до ' + rent.offer.checkout;
+  offerElem.querySelector('.offerTitle').textContent = offer.title;
+  offerElem.querySelector('.offerAdress').textContent = offer.address;
+  offerElem.querySelector('.popup__price').textContent = offer.price + '₽/ночь';
+  offerElem.querySelector('.offerType').textContent = rent.offer.type;
+  offerElem.querySelector('.rooms').textContent = offer.rooms + ' комнаты для ' + offer.guests + ' гостей';
+  offerElem.querySelector('.checkin').textContent = 'Заезд после ' + offer.checkin + ',' + ' выезд до ' + offer.checkout;
   offerElem.querySelector('.popup__avatar').src = rent.author.avatar;
-  offerElem.querySelector('ul + p').textContent = rent.offer.description;
   offerElem.querySelector('.popup__features').innerHTML = '';
-  offerElem.querySelector('.popup__features').appendChild(elemCreator(rent.offer.features, getFeaturesItemElem));
+  offerElem.querySelector('.popup__features').appendChild(elemCreator(offer.features, getFeaturesItemElem));
   offerElem.querySelector('.popup__pictures').innerHTML = '';
-  offerElem.querySelector('.popup__pictures').appendChild(elemCreator(rent.offer.photos, getImgItemElem));
+  offerElem.querySelector('.popup__pictures').appendChild(elemCreator(offer.photos, getImgItemElem));
   return offerElem;
 };
 
