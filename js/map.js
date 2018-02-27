@@ -134,7 +134,7 @@ var getImgItemElem = function (src) {
 };
 
 var createOfferElem = function (rent) {
-	var offer = rent.offer;
+  var offer = rent.offer;
   var offerElem = copyElemFromTemplate('article.map__card');
   offerElem.querySelector('.offerTitle').textContent = offer.title;
   offerElem.querySelector('.offerAdress').textContent = offer.address;
