@@ -88,12 +88,11 @@ for (i = 0; i < OFFERNUMBERS; i++) {
 }
 
 var pinTemplate = document.querySelector('template').content.querySelector('.map__pin');
-var pinImgElem = pinTemplate.querySelector('img');
 var mapPinsElem = document.querySelector('.map .map__pins');
 /** Константы размеров пина */
-var NEEDLE_HEIGHT = 18;
-var PIN_OFFSET_X = pinImgElem.getAttribute('width') / 2;
-var PIN_OFFSET_Y = parseFloat(pinImgElem.getAttribute('height')) + NEEDLE_HEIGHT;
+
+var PIN_OFFSET_X = 40;
+var PIN_OFFSET_Y = 70;
 
 var createElem = function (pinsData) {
   var pinElem = pinTemplate.cloneNode(true);
