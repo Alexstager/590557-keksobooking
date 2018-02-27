@@ -90,7 +90,6 @@ for (i = 0; i < OFFERNUMBERS; i++) {
 var pinTemplate = document.querySelector('template').content.querySelector('.map__pin');
 var pinImgElem = pinTemplate.querySelector('img');
 var mapPinsElem = document.querySelector('.map .map__pins');
-
 /** Константы размеров пина */
 var NEEDLE_HEIGHT = 18;
 var PIN_OFFSET_X = pinImgElem.getAttribute('width') / 2;
@@ -110,6 +109,7 @@ for (var offerIndex = 0; offerIndex < royaltyOffers.length; offerIndex++) {
   pinFragment.appendChild(createElem(royaltyOffers[offerIndex]));
   mapPinsElem.appendChild(pinFragment);
 }
+
 var mapOfferElem = document.querySelector('.map');
 var copyElemFromTemplate = function (querySelector) {
   return document.querySelector('template').content.querySelector(querySelector).cloneNode(true);
