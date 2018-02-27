@@ -89,15 +89,13 @@ for (i = 0; i < OFFERNUMBERS; i++) {
 
 var pinTemplate = document.querySelector('template').content.querySelector('.map__pin');
 var mapPinsElem = document.querySelector('.map .map__pins');
-/** Константы размеров пина */
-
 var PIN_OFFSET_X = 40;
 var PIN_OFFSET_Y = 70;
 
 var createElem = function (pinsData) {
   var pinElem = pinTemplate.cloneNode(true);
   pinElem.querySelector('img').src = pinsData.author.avatar;
-  pinElem.style.left = pinsData.location.x - PIN_OFFSET_X + 'px';
+  pinElem.style.left = pinsData.location.x - PIN_OFFSET_X / 2 + 'px';
   pinElem.style.top = pinsData.location.y - PIN_OFFSET_Y + 'px';
   pinElem.classList.add('map__pin');
   return pinElem;
